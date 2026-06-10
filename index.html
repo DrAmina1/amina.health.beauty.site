@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Amina | Интегративная косметология & Нутрициология</title>
+
+<!-- Подключение элегантных шрифтов -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* Цветовая палитра в стиле Canva макета */
+:root {
+--bg-color: #EADCD6; /* Базовый нежный пудровый фон */
+--bg-gradient: linear-gradient(135deg, #EADCD6 0%, #F5ECE8 100%);
+--card-bg: rgba(253, 248, 245, 0.85); /* Светлая подложка для блоков */
+--text-main: #2C2623; /* Темный кофейный для текста */
+--accent: #8C7368; /* Пыльно-розовый / приглушенный коричневый */
+--border-color: rgba(44, 38, 35, 0.15); /* Тонкие рамки как в Canva */
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+scroll-behavior: smooth;
+}
+
+body {
+font-family: 'Montserrat', sans-serif;
+background: var(--bg-gradient);
+background-attachment: fixed;
+color: var(--text-main);
+line-height: 1.7;
+padding-top: 80px;
+}
+
+/* Навигационное меню (Шапка) */
+header {
+position: fixed;
+top: 0;
+width: 100%;
+background-color: rgba(234, 220, 214, 0.95);
+backdrop-filter: blur(10px);
+z-index: 1000;
+border-bottom: 1px solid var(--border-color);
+}
+
+.nav-container {
+max-width: 1100px;
+margin: 0 auto;
+display: flex;
+justify-content: center;
+padding: 20px;
+}
+
+.nav-links {
+display: flex;
+gap: 25px;
+list-style: none;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.nav-links a {
+text-decoration: none;
+color: var(--text-main);
+font-size: 11px;
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 2px;
+transition: color 0.3s;
+}
+
+.nav-links a:hover {
+color: var(--accent);
+}
+
+/* Общие стили для секций-слайдов */
+
+.section {
+max-width: 1000px;
+margin: 40px auto;
+padding: 20px;
+}
+
+/* Карточка-слайд (имитация дизайна Canva) */
+.slide-card {
+background: var(--card-bg);
+border: 1px solid var(--border-color);
+border-radius: 8px;
+padding: 50px;
+box-shadow: 0 15px 35px rgba(44, 38, 35, 0.05);
+display: grid;
+gap: 40px;
+align-items: center;
+position: relative;
+}
+
+/* Заголовки секций */
+.section-title {
+font-family: 'Playfair Display', serif;
+font-size: 24px;
+font-weight: 500;
+letter-spacing: 1px;
+text-transform: uppercase;
+margin-bottom: 25px;
+color: var(--text-main);
+border-bottom: 1px solid var(--border-color);
+padding-bottom: 15px;
+}
+
+/* --- СЛАЙД 1: ГЛАВНАЯ --- */
+.hero-grid {
+grid-template-columns: 1.1fr 1.9fr;
+}
+
+.hero-info {
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+height: 100%;
+min-height: 320px;
+}
+
+.hero-title {
+font-family: 'Playfair Display', serif;
+font-size: 46px;
+font-weight: 400;
+margin-bottom: 15px;
+letter-spacing: 1px;
+}
+
+.hero-subtitle {
+font-size: 14px;
+font-weight: 400;
+line-height: 1.5;
+color: #5C504A;
+margin-bottom: 30px;
+}
+
+.hero-contacts {
+margin-top: auto;
+}
+
+.contact-item {
+display: flex;
+align-items: center;
+gap: 10px;
+text-decoration: none;
+color: var(--text-main);
+font-size: 13px;
+margin-bottom: 10px;
+font-weight: 500;
+transition: color 0.3s;
+}
+
+.contact-item:hover {
+color: var(--accent);
+}
+
+.hero-images {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 15px;
+}
+
+.hero-images img {
+width: 100%;
+height: 380px;
+object-fit: cover;
+border-radius: 4px;
+border: 1px solid rgba(44, 38, 35, 0.1);
+}
+
+/* --- СЛАЙД 2: О БО МНЕ --- */
+.about-grid {
+grid-template-columns: 1.8fr 1.2fr;
+}
+
+.about-text {
+font-size: 14px;
+text-align: justify;
+letter-spacing: 0.5px;
+line-height: 1.8;
+}
+
+.about-text h2 {
+font-size: 18px;
+font-weight: 600;
+margin-bottom: 20px;
+line-height: 1.5;
+}
+
+.about-img {
+width: 100%;
+height: 400px;
+object-fit: cover;
+border-radius: 4px;
+border: 1px solid rgba(44, 38, 35, 0.1);
+}
+
+/* --- СЛАЙД 3: УСЛУГИ --- */
+.services-grid {
+grid-template-columns: 1.6fr 1.4fr;
+}
+
+.services-list {
+list-style: none;
+}
+
+.services-list li {
+font-size: 13px;
+font-weight: 600;
+letter-spacing: 1px;
+margin-bottom: 15px;
+padding-left: 20px;
+position: relative;
+text-transform: uppercase;
+}
+
+.services-list li::before {
+content: "•";
+position: absolute;
+left: 0;
+color: var(--accent);
+}
+
+/* --- СЛАЙД 4: ПОДХОД К ЛЕЧЕНИЮ --- */
+.approach-text {
+font-size: 14px;
+line-height: 1.8;
+
+}
+
+.approach-text p {
+margin-bottom: 20px;
+}
+
+.approach-list {
+list-style: none;
+margin: 20px 0;
+padding-left: 15px;
+}
+
+.approach-list li {
+margin-bottom: 8px;
+font-weight: 500;
+}
+
+/* --- СЛАЙД 5: ОБУЧЕНИЕ --- */
+.edu-text {
+font-size: 14px;
+}
+
+.edu-bold {
+font-weight: 600;
+font-size: 16px;
+margin-bottom: 15px;
+}
+
+.edu-list {
+list-style: none;
+margin: 20px 0;
+padding-left: 15px;
+}
+
+.edu-list li {
+margin-bottom: 8px;
+font-weight: 500;
+}
+
+/* --- СЛАЙД 6: ДО/ПОСЛЕ --- */
+.results-grid {
+grid-template-columns: 1.4fr 1.6fr;
+}
+
+.results-img {
+width: 100%;
+height: auto;
+max-height: 450px;
+object-fit: contain;
+border-radius: 4px;
+}
+
+/* --- СЛАЙД 7: КОНТАКТЫ --- */
+.contact-card {
+text-align: center;
+max-width: 600px;
+margin: 0 auto;
+}
+
+.contact-card h3 {
+font-family: 'Playfair Display', serif;
+font-size: 22px;
+margin-bottom: 15px;
+font-weight: 500;
+}
+
+.contact-card p {
+font-size: 14px;
+margin-bottom: 25px;
+color: #5C504A;
+}
+
+.social-buttons {
+display: flex;
+flex-direction: column;
+gap: 15px;
+align-items: center;
+margin-top: 20px;
+}
+
+.btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+width: 100%;
+max-width: 320px;
+padding: 15px;
+border-radius: 4px;
+text-decoration: none;
+font-size: 13px;
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 1px;
+transition: all 0.3s ease;
+border: 1px solid var(--accent);
+}
+
+.btn-whatsapp {
+background-color: #8FA89B;
+color: white;
+border-color: #8FA89B;
+}
+
+.btn-whatsapp:hover {
+background-color: #7A9386;
+}
+
+.btn-outline {
+background-color: transparent;
+color: var(--text-main);
+}
+
+.btn-outline:hover {
+background-color: var(--accent);
+color: white;
+}
+
+/* Адаптивность под мобильные телефоны */
+@media (max-width: 768px) {
+body {
+padding-top: 120px;
+}
+.slide-card {
+grid-template-columns: 1fr !important;
+padding: 30px 20px;
+}
+.hero-images {
+order: -1; /* Картинки будут сверху текста на телефонах */
+}
+.hero-images img {
+height: 250px;
+}
+.about-img {
+height: 300px;
+}
+.hero-title {
+font-size: 36px;
+}
+.nav-links {
+gap: 12px;
+}
+.nav-links a {
+font-size: 9px;
+letter-spacing: 1px;
+}
+}
+</style>
+</head>
+<body>
+
+<!-- Навигация по сайту -->
+<header>
+<nav class="nav-container">
+<ul class="nav-links">
+<li><a href="#about">Обо мне</a></li>
+<li><a href="#services">Услуги</a></li>
+<li><a href="#approach">Подход к лечению</a></li>
+<li><a href="#education ">Обучение</a></li>
+<li><a href="#results">До/После</a></li>
+<li><a href="#contacts">Контакты</a></li>
+</ul>
+</nav>
+</header>
+
+<!-- СЛАЙД 1: ГЛАВНАЯ -->
+<section class="section" id="hero">
+<div class="slide-card hero-grid">
+<div class="hero-info">
+<div>
+<h1 class="hero-title">Dr.Amina</h1>
+<p class="hero-subtitle">индивидуальный подход к восстановлению организма</p>
+</div>
+
+<div class="hero-contacts">
+<a href="https://instagram.com/amina.health.beauty" target="_blank" class="contact-item">
+📸 amina.health.beauty
+</a>
+<a href="https://wa.me/79318888082" target="_blank" class="contact-item">
+📞 +7 931 888 80 82
+</a>
+</div>
+</div>
+
+<div class="hero-images">
+<img src="hero1.jpg" alt="Косметологическая процедура">
+<img src="hero2.jpg" alt="Вакуумный массаж">
+</div>
+</div>
+</section>
+
+<!-- СЛАЙД 2: О БО МНЕ -->
+<section class="section" id="about">
+<div class="slide-card about-grid">
+<div class="about-text">
+<h2>Я — КОСМЕТОЛОГ И НУТРИЦИОЛОГ С ИНТЕГРАТИВНЫМ ПОДХОДОМ К ЗДОРОВЬЮ И КРАСОТЕ КОЖИ.</h2>
+<p>РАБОТАЮ НЕ ТОЛЬКО С ВНЕШНИМИ ПРОЯВЛЕНИЯМИ, НО И С ПРИЧИНАМИ ЭСТЕТИЧЕСКИХ ПРОБЛЕМ. СПЕЦИАЛИЗИРУЮСЬ НА ЛЕЧЕНИИ АКНЕ, КОРРЕКЦИИ ВОЗРАСТНЫХ ИЗМЕНЕНИЙ И УЛУЧШЕНИИ КАЧЕСТВА КОЖИ. В СВОЕЙ ПРАКТИКЕ ИСПОЛЬЗУЮ КОМПЛЕКСНЫЙ ПОДХОД: АНАЛИЗЫ, ДИАГНОСТИКУ, ПОДБОР ИНДИВИДУАЛЬНЫХ СХЕМ ВОССТАНОВЛЕНИЯ, КОСМЕТОЛОГИЧЕСКИЕ ПРОЦЕДУРЫ И РЕКОМЕНДАЦИИ ПО ПИТАНИЮ И ОБРАЗУ ЖИЗНИ.</p>
+</div>
+<img src="about.jpg" alt="Доктор Амина за работой" class="about-img">
+</div>
+</section>
+
+<!-- СЛАЙД 3: УСЛУГИ -->
+<section class="section" id="services">
+<div class="slide-card services-grid">
+<div>
+<h2 class="section-title">Мои услуги включают:</h2>
+<ul class="services-list">
+<li>Лечение акне и постакне;</li>
+<li>Коррекцию возрастных изменений;</li>
+<li>Восстановление здоровья и качества кожи;</li>
+<li>Разбор анализов и нутрициологическое сопровождение;</li>
+<li>Косметологические процедуры;</li>
+<li>Хиджаму;</li>
+<li>Массажные техники;</li>
+<li>Биоревитализацию и другие методы омоложения.</li>
+</ul>
+</div>
+<div>
+<img src="hero2.jpg" alt="Процедура баночного массажа" class="about-img" style="height: 350px;">
+</div>
+</div>
+</section>
+
+<!-- СЛАЙД 4: ПОДХОД К ЛЕЧЕНИЮ -->
+<section class="section" id="approach">
+<div class="slide-card">
+<h2 class="section-title">Подход к лечению</h2>
+<div class="approach-text">
+<p><strong>МОЙ ПОДХОД ОСНОВАН НА ИНТЕГРАТИВНОЙ КОСМЕТОЛОГИИ — Я РАССМАТРИВАЮ КОЖУ КАК ОТРАЖЕНИЕ СОСТОЯНИЯ ОРГАНИЗМА В ЦЕЛОМ.</strong></p>
+<p>ПРИ РАБОТЕ С АКНЕ, ВОСПАЛЕНИЯМИ, ТУСКЛЫМ ЦВЕТОМ ЛИЦА, ВОЗРАСТНЫМИ ИЗМЕНЕНИЯМИ И ДРУГИМИ ЭСТЕТИЧЕСКИМИ ПРОБЛЕМАМИ Я НЕ ОГРАНИЧИВАЮСЬ ТОЛЬКО ПРОЦЕДУРАМИ. ПРИ НЕОБХОДИМОСТИ МЫ АНАЛИЗИРУЕМ ОБРАЗ ЖИЗНИ, ПИТАНИЕ, РЕЗУЛЬТАТЫ АНАЛИЗОВ И ВОЗМОЖНЫЕ ВНУТРЕННИЕ ПРИЧИНЫ НАРУШЕНИЙ.</p>
+
+<p><strong>КАЖДАЯ ПРОГРАММА ПОДБИРАЕТСЯ ИНДИВИДУАЛЬНО И МОЖЕТ ВКЛЮЧАТЬ:</strong></p>
+<ul class="approach-list">
+<li>• Консульта цию и диагностику;</li>
+<li>• Разбор анализов;</li>
+<li>• Рекомендации по питанию и образу жизни;</li>
+<li>• Домашний уход;</li>
+<li>• Косметологические процедуры;</li>
+<li>• Массажные техники и хиджаму.</li>
+</ul>
+
+<p>ТАКОЙ КОМПЛЕКСНЫЙ ПОДХОД ПОМОГАЕТ НЕ ПРОСТО ВРЕМЕННО УЛУЧШИТЬ ВНЕШНИЙ ВИД КОЖИ, А ДОБИТЬСЯ БОЛЕЕ УСТОЙЧИВОГО И ДОЛГОСРОЧНОГО РЕЗУЛЬТАТА.</p>
+</div>
+</div>
+</section>
+
+<!-- СЛАЙД 5: ОБУЧЕНИЕ -->
+<section class="section" id="education">
+<div class="slide-card">
+<h2 class="section-title">Обучение</h2>
+<div class="edu-text">
+<p class="edu-bold">Освойте востребованную профессию или повысьте свою квалификацию.</p>
+<p>Я провожу обучение для начинающих специалистов и практикующих мастеров, которые хотят получить новую профессию или расширить свои профессиональные навыки.</p>
+
+<p style="margin-top: 15px; font-weight: 600;">Доступные направления обучения:</p>
+<ul class="edu-list">
+<li>• Курсы младшей медицинской сестры;</li>
+<li>• Хиджама;</li>
+<li>• Массажные техники;</li>
+<li>• Гирудотерапия;</li>
+<li>• Косметолог-эстетист;</li>
+<li>• Иглоукалывание;</li>
+<li>• Повышение квалификации для специалистов.</li>
+</ul>
+
+<p style="margin-bottom: 15px;">В процессе обучения особое внимание уделяется не только теории, но и практической отработке навыков. Моя цель — помочь каждому ученику уверенно применять полученные знания в работе и развиваться в выбранной профессии.</p>
+<p><em>После прохождения обучения вы получаете необходимые знания, практический опыт и поддержку на пути профессионального роста.</em></p>
+</div>
+</div>
+</section>
+
+<!-- СЛАЙД 6: ДО/ПОСЛЕ -->
+<section class="section" id="results">
+<div class="slide-card results-grid">
+<div class="about-text">
+<h2 class="section-title" style="border: none; padding: 0;">Результаты</h2>
+<p><strong>Здесь представлены некоторые работы и изменения, которых удалось достичь благодаря индивидуальному подходу и комплексной работе с кожей.</strong></p>
+<br>
+<p>Еще больше фотографий «До/После», отзывов и результатов клиентов вы найдете в моем Instagram, где я регулярно делюсь процессом лечения, процедурами и кейсами из практики.</p>
+</div>
+<img src="before-after.jpg" alt="Результаты лечения До/После" class="results-img">
+</div>
+</section>
+
+<!-- СЛАЙД 7: КОНТАКТЫ -->
+<section class="section" id="contacts">
+<div class="slide-card">
+<div class="contact-card">
+<h3>Готовы начать путь к здоровой и красивой коже?</h3>
+<p>Запишитесь на консультацию, и мы вместе подберем решение именно для вашей ситуации. Также вы можете обратиться по вопросам обучения, повышения квалификации и сотрудничества.</p>
+
+<div class="social-buttons">
+<!-- Кнопка WhatsApp -->
+<a href="https://wa.me/79318888082" target="_blank" class="btn btn-whatsapp">
+💬 Написать в WhatsApp
+</a>
+
+<!-- Кнопка Instagram -->
+<a href="https://instagram.com/amina.health.beauty" target="_blank" class="btn btn-outline">
+📸 Наш Instagram
+</a>
+
+<!--Кнопка Телефонного звонка -->
+<a href="tel:+79318888082" class="btn btn-outline">
+📞 Позвонить: +7 931 888 80 82
+</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Подвал сайта -->
+<footer style="text-align: center; padding: 40px; font-size: 11px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase;">
+© 2026 Dr. Amina. Все права защищены.
+</footer>
+
+</body>
+</html>
